@@ -1,0 +1,17 @@
+{
+  "n_samples": 569,
+  "held_out_predictions": 11380,
+  "malignant_fraction": 0.37258347978910367,
+  "ensemble_auc": 0.9942241755192642,
+  "ensemble_accuracy": 0.9695957820738137,
+  "overall_error": 0.03040421792618629,
+  "top_quintile_error": 0.12347826086956522,
+  "remaining_error": 0.006828193832599119,
+  "error_enrichment": 18.0835904628331,
+  "enrichment_ci95_cluster_bootstrap": [
+    7.556279974504048,
+    85.30618196570074
+  ],
+  "selective_error_reduction": 0.7754195207659597,
+  "success": true
+}

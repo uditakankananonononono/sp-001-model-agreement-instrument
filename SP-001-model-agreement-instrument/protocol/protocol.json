@@ -1,0 +1,23 @@
+{
+  "protocol_version": "1.0-locked-before-analysis",
+  "locked_at": "2026-09-21T19:50:30+05:30",
+  "source_topic": "Second list #78: Model Agreement as a Scientific Instrument",
+  "title": "Can cross-model disagreement serve as an empirical uncertainty instrument in breast-tumor diagnosis?",
+  "question": "Do disagreements among diverse, independently trained classifiers identify predictions at elevated error risk and enable safer selective prediction?",
+  "dataset": "UCI Wisconsin Diagnostic Breast Cancer (WDBC), 569 samples, 30 features",
+  "endpoint": "malignant vs benign diagnosis",
+  "models": ["logistic regression", "RBF SVM", "random forest", "k-nearest neighbors", "Gaussian naive Bayes"],
+  "validation": "Repeated stratified 5-fold cross-validation, 20 repeats (100 held-out folds); all preprocessing fit inside each training fold",
+  "primary_metric": "Error enrichment among the top disagreement quintile relative to remaining predictions",
+  "secondary_metric": "Error rate after abstaining on the top disagreement quintile versus error rate on all predictions",
+  "success_gate": {
+    "all_required": [
+      "top-disagreement-quintile error enrichment >= 2.0",
+      "selective error reduction >= 25% after abstaining on top disagreement quintile",
+      "bootstrap 95% confidence interval lower bound for enrichment > 1.0"
+    ]
+  },
+  "failure_policy": "If any required gate fails, classify as negative and preserve full outputs; do not produce a success paper.",
+  "leakage_controls": ["fold-contained scaling", "patient-level held-out predictions", "fixed random seeds", "no tuning on held-out outcomes"],
+  "data_sha256": "d606af411f3e5be8a317a5a8b652b425aaf0ff38ca683d5327ffff94c3695f4a"
+}
